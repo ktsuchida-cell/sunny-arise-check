@@ -473,6 +473,15 @@ header#header{position:static}
 .wp-site-blocks > .wp-block-template-part:first-child header{display:none !important}
 /* ナビ・ロゴ・ボタンの不自然な折り返しを防止 */
 .logo .txt b,.menu a,.head-tel .num,.head-tel .sub,.btn,.tel-alt{white-space:nowrap}
+/* wp.comのサニタイズで<nav>タグが除去され、ナビリンクがヘッダー直下に裸で並ぶため、nav非依存でスタイルする */
+header#header .nav{gap:18px;flex-wrap:wrap}
+header#header .nav > a{white-space:nowrap}
+header#header .nav > a:not(.logo):not(.btn):not(.head-tel){color:#1f2b3d;font-size:.88rem;font-weight:500;transition:.2s}
+header#header .nav > a:not(.logo):not(.btn):not(.head-tel):hover{color:#16345c}
+@media(max-width:900px){
+  header#header .nav{justify-content:center}
+  header#header .nav > a.logo{width:100%;justify-content:center}
+}
 /* wp.comのサニタイズでインラインSVGが除去されるため、空になるアイコン枠を非表示 */
 .cert-item .ic,.ci-row .ic{display:none}
 .sp-cta .sp-tel svg{display:none}
