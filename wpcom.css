@@ -449,8 +449,9 @@
 .entry-content, .wp-block-post-content{max-width:none !important;padding:0 !important;margin:0 !important}
 .entry-content > *, .wp-block-post-content > *{max-width:none !important;margin-left:0 !important;margin-right:0 !important}
 .wp-block-html{max-width:none !important}
-/* テーマが出すページタイトル・余白を隠す */
+/* テーマが出すページタイトル・アイキャッチ（og:image用に設定・表示は不要）・余白を隠す */
 .wp-block-post-title{display:none}
+.wp-block-post-featured-image,.post-thumbnail{display:none !important}
 .wp-site-blocks{padding:0 !important}
 /* JSなしでも全要素を表示（フェード演出の無効化） */
 .reveal{opacity:1 !important;transform:none !important}
