@@ -246,13 +246,12 @@
 
   /* ===== Diagnosis CTA ===== */
   .diag-band{background:linear-gradient(135deg,#16345c 0%,#0e2240 100%);border-radius:16px;margin-inline:clamp(12px,1.5vw,24px);padding:96px 0}
-  .diag-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:center}
+  .diag-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start}
   .diag-band .free{font-family:"Inter",sans-serif;letter-spacing:.22em;color:#f2a85c;font-size:.72rem;font-weight:600;display:block;margin-bottom:18px;text-transform:uppercase}
   .diag-band h2{color:#fff;font-size:clamp(1.6rem,3.2vw,2.3rem);margin-bottom:18px;font-weight:800}
   .diag-band p{color:#b9c6da;font-size:.94rem;margin-bottom:30px;max-width:480px;line-height:1.9}
   .diag-band .tel-alt{margin-top:18px;font-size:.84rem;color:#b9c6da}
   .diag-band .tel-alt a{color:#fff;font-family:"Inter",sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.03em}
-  .diag-grid{align-items:start}
   .diag-tool{background:#fff;border-radius:6px;padding:30px 28px;box-shadow:0 18px 44px rgba(4,12,26,.35)}
   .diag-tool h3{font-size:1.05rem;margin-bottom:18px}
   .dt-field{margin-bottom:14px}
@@ -482,8 +481,8 @@ header#header{position:static}
 .sa-column-list li.wp-block-post:hover{box-shadow:0 14px 34px rgba(14,34,64,.13);transform:translateY(-3px)}
 .sa-column-list .wp-block-post-featured-image{display:block !important;margin:0}
 .sa-column-list .wp-block-post-featured-image img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
-.sa-column-list .wp-block-post-date{display:block;padding:16px 20px 0;font-size:.78rem;color:#8a94a3;font-family:"Inter",sans-serif;letter-spacing:.05em}
-.sa-column-list .wp-block-post-date a{color:#8a94a3;text-decoration:none}
+.sa-column-list .wp-block-post-date{display:block;padding:16px 20px 0;font-size:.78rem;color:#5b6470;font-family:"Inter",sans-serif;letter-spacing:.05em}
+.sa-column-list .wp-block-post-date a{color:#5b6470;text-decoration:none}
 .sa-column-list h3.wp-block-post-title{display:block !important;padding:6px 20px 0;font-size:1rem;font-weight:700;line-height:1.6;margin:0}
 .sa-column-list .wp-block-post-title a{color:#16345c;text-decoration:none;transition:.2s}
 .sa-column-list .wp-block-post-title a:hover{color:#d96f06}
@@ -518,8 +517,13 @@ body.single-post .wp-block-post-content img{border-radius:6px;max-width:100%;hei
 /* テーマ（Blank Canvas）の標準ヘッダー・フッターを非表示（自前のheader/footerはコンテンツ内にあるため影響なし） */
 .wp-site-blocks > header{display:none !important}
 .wp-site-blocks > .wp-block-template-part:first-child header{display:none !important}
-/* ナビ・ロゴ・ボタンの不自然な折り返しを防止 */
-.logo .txt b,.menu a,.head-tel .num,.head-tel .sub,.btn,.tel-alt{white-space:nowrap}
+/* ナビ・ロゴ・電話番号の不自然な折り返しのみ防止（.btn/.tel-alt は長文でスマホ横はみ出しの原因になるため除外し折返し可に） */
+.logo .txt b,.head-tel .num,.head-tel .sub{white-space:nowrap}
+/* レスポンシブ崩れ修正（監査2026-07-16）：認定施設カードの段階カラム化／サービス系グリッドのタブレット中間段／フッターラッパーのグリッド化 */
+@media(max-width:1000px){.fac-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.fac-grid{grid-template-columns:1fr}}
+@media(min-width:701px) and (max-width:1000px){.issue-grid,.svc-grid,.res-grid{grid-template-columns:repeat(2,1fr)}}
+.foot-links{display:contents}
 /* ヘッダーナビ：wp.comは<nav>を剥がすため、ビルドで PC用<span class=pc-nav>＋スマホ用<details class=sp-nav>（CSSだけで開閉するハンバーガー）に変換している */
 header#header .nav{gap:18px}
 .pc-nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:flex-end}
