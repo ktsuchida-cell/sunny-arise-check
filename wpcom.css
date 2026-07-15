@@ -472,6 +472,40 @@ header#header{position:static}
 @media(max-width:900px){
   .legend-grid{grid-template-columns:1fr}
 }
+/* ===== コラム（投稿一覧＝クエリーループ／記事詳細）===== */
+/* 一覧カード：サムネ16:9＋日付＋タイトル＋抜粋。3→2→1カラム */
+.sa-column-list{max-width:1140px;margin:0 auto;padding:8px 24px 90px}
+.sa-column-list ul.wp-block-post-template{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;list-style:none;padding:0;margin:0}
+@media(max-width:1000px){.sa-column-list ul.wp-block-post-template{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){.sa-column-list ul.wp-block-post-template{grid-template-columns:1fr}}
+.sa-column-list li.wp-block-post{background:#fff;border:1px solid #dfe5ec;border-radius:6px;overflow:hidden;box-shadow:0 2px 10px rgba(14,34,64,.05);transition:.25s}
+.sa-column-list li.wp-block-post:hover{box-shadow:0 14px 34px rgba(14,34,64,.13);transform:translateY(-3px)}
+.sa-column-list .wp-block-post-featured-image{display:block !important;margin:0}
+.sa-column-list .wp-block-post-featured-image img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.sa-column-list .wp-block-post-date{display:block;padding:16px 20px 0;font-size:.78rem;color:#8a94a3;font-family:"Inter",sans-serif;letter-spacing:.05em}
+.sa-column-list .wp-block-post-date a{color:#8a94a3;text-decoration:none}
+.sa-column-list h3.wp-block-post-title{display:block !important;padding:6px 20px 0;font-size:1rem;font-weight:700;line-height:1.6;margin:0}
+.sa-column-list .wp-block-post-title a{color:#16345c;text-decoration:none;transition:.2s}
+.sa-column-list .wp-block-post-title a:hover{color:#d96f06}
+.sa-column-list .wp-block-post-excerpt{padding:8px 20px 20px;font-size:.85rem;color:#4e5a6b;line-height:1.8;margin:0}
+.sa-column-list .wp-block-post-excerpt p{margin:0}
+.sa-column-list .wp-block-post-excerpt__more-link{color:#a85500;font-weight:600;text-decoration:none}
+.sa-column-list .wp-block-query-pagination{margin-top:44px;display:flex;justify-content:center;gap:10px;font-family:"Inter",sans-serif;font-size:.9rem}
+.sa-column-list .wp-block-query-pagination a,.sa-column-list .wp-block-query-pagination-numbers .current{padding:8px 14px;border:1px solid #dfe5ec;border-radius:6px;color:#16345c;text-decoration:none}
+.sa-column-list .wp-block-query-pagination a:hover{border-color:#16345c}
+.sa-column-list .wp-block-query-no-results p{text-align:center;color:#4e5a6b;padding:40px 0}
+/* 記事詳細（single）：固定ページ用の非表示ルールを上書きして表示し、読みやすく整える */
+body.single-post .wp-block-post-title{display:block !important;max-width:760px;margin:56px auto 18px;padding:0 24px;font-size:clamp(1.5rem,3vw,2.1rem);font-weight:900;line-height:1.6;color:#16345c}
+body.single-post .wp-block-post-featured-image{display:block !important;max-width:760px;margin:0 auto 28px;padding:0 24px}
+body.single-post .wp-block-post-featured-image img{border-radius:6px;width:100%}
+body.single-post .wp-block-post-content{max-width:760px !important;margin:0 auto !important;padding:0 24px 90px !important;font-size:1rem;line-height:2;color:#1f2b3d}
+body.single-post .wp-block-post-content h2{font-size:1.35rem;margin:44px 0 16px;color:#16345c;border-left:4px solid #e87f17;padding-left:14px}
+body.single-post .wp-block-post-content h3{font-size:1.1rem;margin:32px 0 12px;color:#16345c}
+body.single-post .wp-block-post-content p{margin-bottom:1.2em}
+body.single-post .wp-block-post-content a{color:#a85500}
+body.single-post .wp-block-post-content img{border-radius:6px;max-width:100%;height:auto}
+/* コラム一覧ページの案内プレースホルダ（ブロック設置後は画面に出ない想定だが念のため装飾） */
+.sa-column-slot{max-width:1140px;margin:0 auto 60px;border:2px dashed #dfe5ec;border-radius:6px;padding:22px;font-size:.85rem;color:#4e5a6b;background:#fff}
 /* Jetpackフォームの送信ボタンをブランドカラーに（テーマ標準の黒を上書き） */
 .wp-block-jetpack-button button,.contact-form button[type=submit]{background:#e87f17 !important;color:#0e2240 !important;border:none !important;border-radius:6px !important;font-weight:700 !important;padding:14px 30px !important;cursor:pointer}
 .wp-block-jetpack-button button:hover,.contact-form button[type=submit]:hover{background:#d96f06 !important}
