@@ -451,14 +451,8 @@
 .wp-site-blocks{padding:0 !important}
 /* JSなしでも全要素を表示（フェード演出の無効化） */
 .reveal{opacity:1 !important;transform:none !important}
-/* JSなしのためハンバーガーは使わない：ナビは折り返し表示 */
+/* 旧ハンバーガーボタン（JS依存）はビルドで除去済み。念のため非表示 */
 .nav-toggle{display:none !important}
-@media(max-width:900px){
-  .menu{position:static !important;height:auto !important;width:auto !important;max-width:none !important;
-    flex-direction:row !important;flex-wrap:wrap;gap:12px 16px !important;justify-content:flex-end;
-    background:transparent !important;border:none !important;box-shadow:none !important;font-size:.82rem !important}
-  .head-tel{display:none}
-}
 /* アンカー移動（ブラウザ標準のスムーズスクロール） */
 html{scroll-behavior:smooth}
 /* 固定ヘッダーは使わない（テーマ内で通常ヘッダーとして表示） */
@@ -473,14 +467,28 @@ header#header{position:static}
 .wp-site-blocks > .wp-block-template-part:first-child header{display:none !important}
 /* ナビ・ロゴ・ボタンの不自然な折り返しを防止 */
 .logo .txt b,.menu a,.head-tel .num,.head-tel .sub,.btn,.tel-alt{white-space:nowrap}
-/* wp.comのサニタイズで<nav>タグが除去され、ナビリンクがヘッダー直下に裸で並ぶため、nav非依存でスタイルする */
-header#header .nav{gap:18px;flex-wrap:wrap}
-header#header .nav > a{white-space:nowrap}
-header#header .nav > a:not(.logo):not(.btn):not(.head-tel){color:#1f2b3d;font-size:.88rem;font-weight:500;transition:.2s}
-header#header .nav > a:not(.logo):not(.btn):not(.head-tel):hover{color:#16345c}
+/* ヘッダーナビ：wp.comは<nav>を剥がすため、ビルドで PC用<span class=pc-nav>＋スマホ用<details class=sp-nav>（CSSだけで開閉するハンバーガー）に変換している */
+header#header .nav{gap:18px}
+.pc-nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap;justify-content:flex-end}
+.pc-nav a{white-space:nowrap}
+.pc-nav a:not(.btn):not(.head-tel){color:#1f2b3d;font-size:.88rem;font-weight:500;transition:.2s}
+.pc-nav a:not(.btn):not(.head-tel):hover{color:#16345c}
+.sp-nav{display:none}
 @media(max-width:900px){
-  header#header .nav{justify-content:center}
-  header#header .nav > a.logo{width:100%;justify-content:center}
+  header#header .nav{justify-content:space-between}
+  .pc-nav{display:none}
+  .sp-nav{display:block;position:relative}
+  .sp-nav summary{list-style:none;cursor:pointer;font-size:1.5rem;line-height:1;color:#16345c;
+    padding:7px 13px;border:1px solid #dfe5ec;border-radius:8px;user-select:none;background:#fff}
+  .sp-nav summary::-webkit-details-marker{display:none}
+  .sp-nav[open] summary{background:#f2f6fa;border-color:#16345c}
+  .sp-nav-panel{position:absolute;right:0;top:calc(100% + 10px);background:#fff;border:1px solid #dfe5ec;
+    border-radius:10px;box-shadow:0 16px 40px rgba(14,34,64,.18);padding:16px;display:flex;flex-direction:column;
+    gap:2px;min-width:240px;z-index:10000}
+  .sp-nav-panel a{color:#1f2b3d;font-weight:600;font-size:.95rem;padding:11px 8px;white-space:nowrap}
+  .sp-nav-panel a.head-tel{display:block !important;text-align:left;border-top:1px solid #eef2f6;margin-top:6px;padding-top:14px}
+  .sp-nav-panel a.head-tel .sub{display:block}
+  .sp-nav-panel a.btn{margin-top:10px;display:flex;justify-content:center}
 }
 /* wp.comのサニタイズでインラインSVGが除去されるため、空になるアイコン枠を非表示 */
 .cert-item .ic,.ci-row .ic{display:none}
