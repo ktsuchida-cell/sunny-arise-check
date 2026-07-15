@@ -478,7 +478,7 @@ header#header{position:static}
 .sa-column-list ul.wp-block-post-template{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;list-style:none;padding:0;margin:0}
 @media(max-width:1000px){.sa-column-list ul.wp-block-post-template{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){.sa-column-list ul.wp-block-post-template{grid-template-columns:1fr}}
-.sa-column-list li.wp-block-post{background:#fff;border:1px solid #dfe5ec;border-radius:6px;overflow:hidden;box-shadow:0 2px 10px rgba(14,34,64,.05);transition:.25s}
+.sa-column-list li.wp-block-post{background:#fff;border:1px solid #dfe5ec;border-radius:6px;overflow:hidden;box-shadow:0 2px 10px rgba(14,34,64,.05);transition:.25s;margin:0 !important}
 .sa-column-list li.wp-block-post:hover{box-shadow:0 14px 34px rgba(14,34,64,.13);transform:translateY(-3px)}
 .sa-column-list .wp-block-post-featured-image{display:block !important;margin:0}
 .sa-column-list .wp-block-post-featured-image img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
