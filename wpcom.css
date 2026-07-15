@@ -397,9 +397,9 @@
 .rank-row .stars{font-size:.95rem;letter-spacing:.12em;min-width:64px}
 .rank-row .rn{font-weight:700;font-size:.94rem;color:#16345c}
 .rank-row .rd{margin-left:auto;font-size:.8rem;color:#4e5a6b}
-.gold .stars{color:#c9a227}
-.silver .stars{color:var(--silver)}
-.bronze .stars{color:var(--bronze)}
+.gold .stars{color:#b8941f}
+.silver .stars{color:#8d9aab}
+.bronze .stars{color:#a06a32}
 .rod-explain{background:#fff;border:1px solid #dfe5ec;border-radius:6px;padding:28px 30px}
 .rod-explain h3{font-size:.98rem;margin-bottom:12px}
 .rod-explain p{font-size:.9375rem;color:#4e5a6b;line-height:1.85}
@@ -415,9 +415,9 @@
 .fac:hover{transform:translateY(-2px);border-color:rgba(22,52,92,.35);box-shadow:0 6px 16px rgba(22,52,92,.06)}
 .fac-top{display:flex;align-items:center;justify-content:space-between;padding:16px 22px;border-bottom:1px solid #dfe5ec;background:#f2f6fa}
 .fac-top .lvl{display:inline-flex;align-items:center;gap:8px;font-size:.8rem;font-weight:700;padding:5px 12px;border-radius:4px;background:#fff}
-.lvl.gold{color:#7a610e;border:1px solid #c9a227}
-.lvl.silver{color:#54616f;border:1px solid var(--silver)}
-.lvl.bronze{color:#7c4e1f;border:1px solid var(--bronze)}
+.lvl.gold{color:#7a610e;border:1px solid #b8941f}
+.lvl.silver{color:#54616f;border:1px solid #8d9aab}
+.lvl.bronze{color:#7c4e1f;border:1px solid #a06a32}
 .lvl .stars{letter-spacing:.08em}
 .fac-body{padding:24px 22px;flex:1;display:flex;flex-direction:column}
 .fac-body h3{font-size:1.08rem;margin-bottom:4px}
