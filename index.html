@@ -12,6 +12,10 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ja_JP">
 <meta property="og:image" content="https://ktsuchida-cell.github.io/sunny-arise-check/ogp.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="サニーアライズ">
+<meta name="twitter:image" content="https://ktsuchida-cell.github.io/sunny-arise-check/ogp.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="canonical" href="https://ktsuchida-cell.github.io/sunny-arise-check/">
 <meta property="og:url" content="https://ktsuchida-cell.github.io/sunny-arise-check/">
@@ -29,9 +33,18 @@
   "publisher": {
     "@type": "Organization",
     "name": "サニーアライズ",
-    "url": "https://sunny-arise.com/",
+    "url": "https://sunnyarise-medrj.wordpress.com/",
+    "sameAs": ["https://sunny-arise.com/"],
     "logo": "https://ktsuchida-cell.github.io/sunny-arise-check/logo-mark.png",
-    "areaServed": "大阪府を中心とした近畿エリア",
+    "telephone": "+81-70-9445-5546",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "telephone": "+81-70-9445-5546",
+      "hoursAvailable": "Mo-Fr 09:00-17:00",
+      "availableLanguage": "ja"
+    },
+    "areaServed": "大阪府を中心に近畿エリア（兵庫・京都・奈良・滋賀・和歌山）",
     "knowsAbout": ["防災コンサルティング", "BCP策定支援", "避難訓練", "介護施設", "医療施設", "福祉施設"]
   }
 }
@@ -122,11 +135,11 @@
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="https://sunny-arise.com/" aria-label="サニーアライズ">
+    <a class="logo" href="https://sunnyarise-medrj.wordpress.com/" aria-label="サニーアライズ">
       <img src="logo-mark.png" alt="サニーアライズ ロゴ">
       <span><b>サニーアライズ</b><span class="en2">SUNNY ARISE</span></span>
     </a>
-    <a class="back" href="https://sunny-arise.com/">サイトへ戻る</a>
+    <a class="back" href="https://sunnyarise-medrj.wordpress.com/">サイトへ戻る</a>
   </div>
 </header>
 
@@ -181,7 +194,7 @@
           <div class="dt-actions">
             <button type="button" class="btn btn-ghost" onclick="copyResult()">結果をコピーする</button>
             <p class="copied" id="copiedMsg">✓ コピーしました。お問い合わせフォームに貼り付けてご相談ください</p>
-            <a class="btn" href="https://sunny-arise.com/#contact">無料相談に進む（サニーアライズ公式サイト）</a>
+            <a class="btn" href="https://sunnyarise-medrj.wordpress.com/#contact">無料相談に進む（サニーアライズ公式サイト）</a>
           </div>
         </div>
         <p class="dt-note">入力内容が送信されることはありません（判定はこの画面内で完結します）。</p>
@@ -192,15 +205,14 @@
 
 <footer>
   <div class="wrap">
-    <p>提供：<a href="https://sunny-arise.com/">サニーアライズ（医療・介護・福祉施設専門の防災コンサルティング）</a>｜TEL 070-9445-5546（平日 9:00–17:00）</p>
+    <p>提供：<a href="https://sunnyarise-medrj.wordpress.com/">サニーアライズ（医療・介護・福祉施設専門の防災コンサルティング）</a>｜TEL 070-9445-5546（平日 9:00–17:00）</p>
   </div>
 </footer>
 
 <script>
   // ===== 簡易チェック（災害時生存率） =====
-  // 判定基準は2026-07-06に代表確認済み：境界（職員1名あたり避難困難者2名/4名）・夜勤0名/4名超は強制「危険」・
-  // BCP未策定は最高でも「要改善」・配点=マンパワー45/BCP25/訓練35・閾値=80点以上「おおむね良好」/45点以下「危険」。
-  // ※正式なMTEDの計算式とは別の簡易版。基準変更時は代表承認を得ること（本体サイト index.html と同一ロジックを維持する）。
+  // 判定ロジック：境界（職員1名あたり避難困難者2名/4名）・夜勤0名または4名超は「危険」・BCP未策定は最高でも「要改善」・
+  // 配点=マンパワー45/BCP25/訓練35・閾値=80点以上「おおむね良好」/45点以下「危険」。正式なMTED計算式とは別の簡易版。
   let dtSummary='';
   function runDiag(){
     const nRes=parseInt(document.getElementById('dtResidents').value,10);
