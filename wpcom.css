@@ -128,9 +128,10 @@
   .sec-dark .sec-head p{color:#b9c6da}
   .card{transition:transform .25s,border-color .25s,box-shadow .25s}
   .card:hover{transform:translateY(-2px);border-color:rgba(22,52,92,.35)!important;box-shadow:0 6px 16px rgba(22,52,92,.06)}
+  /* 控えめ表示の指示（2026-07-15）：8pt相当まで縮小 */
   .inline-cta{display:flex;justify-content:center;margin-top:64px}
-  .inline-cta a{font-weight:700;color:#16345c;font-size:.95rem;border-bottom:2px solid #e87f17;padding-bottom:3px;transition:.2s}
-  .inline-cta a:hover{color:#c96a08}
+  .inline-cta a{font-weight:600;color:#4e5a6b;font-size:11px;border-bottom:1px solid #dfe5ec;padding-bottom:2px;transition:.2s}
+  .inline-cta a:hover{color:#c96a08;border-color:#e87f17}
 
   /* ===== Issues ===== */
   .issue-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
@@ -172,7 +173,9 @@
   .feat b{color:#1f2b3d}
 
   /* ===== Comparison table ===== */
-  .cmp-block{margin-top:96px}
+  /* 「選ばれる理由」（グレー背景）と背景色を分岐：比較表は白カードで浮かせる（2026-07-15） */
+  .cmp-block{margin-top:96px;background:#fff;border:1px solid #dfe5ec;border-radius:6px;padding:48px 40px;box-shadow:0 8px 30px rgba(14,34,64,.06)}
+  @media(max-width:720px){.cmp-block{padding:28px 14px}}
   .cmp-block h3{font-size:clamp(1.2rem,2.4vw,1.5rem);margin-bottom:28px;text-align:center}
   .cmp-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
   table.cmp{width:100%;min-width:680px;border-collapse:collapse;background:#fff;border:1px solid #dfe5ec;font-size:.88rem}
