@@ -453,8 +453,9 @@
 .reveal{opacity:1 !important;transform:none !important}
 /* 旧ハンバーガーボタン（JS依存）はビルドで除去済み。念のため非表示 */
 .nav-toggle{display:none !important}
-/* アンカー移動（ブラウザ標準のスムーズスクロール） */
-html{scroll-behavior:smooth}
+/* アンカー移動は即時ジャンプ。scroll-behavior:smoothは環境によりスクロールが開始しない
+   （＝リンクが「効かない」ように見える）ことを実測確認したため使わない */
+html{scroll-behavior:auto}
 /* 固定ヘッダーは使わない（テーマ内で通常ヘッダーとして表示） */
 header#header{position:static}
 .hero{padding-top:40px}
