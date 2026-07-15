@@ -383,6 +383,7 @@
 
 
 /* --- 認定施設ページ固有（facilities.html由来・抽出） --- */
+.phero{padding:150px 0 60px;background:#ffffff}
 .crumb{font-size:.78rem;color:#4e5a6b;margin-bottom:24px}
 .crumb a:hover{color:#c96a08}
 .phero .tag{font-family:"Inter",sans-serif;letter-spacing:.1em;color:#a85500;font-size:.8125rem;font-weight:600;display:block;margin-bottom:14px;text-transform:uppercase}
@@ -392,6 +393,7 @@
 .note{margin-top:32px;display:flex;gap:12px;align-items:flex-start;background:#fdf2e3;border:1px solid rgba(232,127,23,.4);border-radius:6px;padding:16px 20px;font-size:.86rem;color:#1f2b3d;max-width:760px;line-height:1.8}
 .note .nmark{font-weight:700;color:#a85500;flex:none}
 .note b{color:#a85500}
+.legend{padding:60px 0;background:#f2f6fa}
 .legend-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:start}
 .legend .sec-tag{text-align:left}
 .ranks{display:flex;flex-direction:column;gap:12px}
@@ -408,9 +410,11 @@
 .rod-explain p{font-size:.9375rem;color:#4e5a6b;line-height:1.85}
 .rod-explain p b{color:#1f2b3d}
 .rod-explain .chip{display:inline-block;font-family:"Inter",sans-serif;letter-spacing:.1em;font-size:.85rem;font-weight:600;color:#16345c;background:#f2f6fa;border:1px solid #dfe5ec;border-radius:4px;padding:6px 14px;margin-top:14px}
+.filter{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:48px}
 .filter button{font-family:inherit;font-size:.86rem;font-weight:600;color:#4e5a6b;background:#fff;border:1px solid #dfe5ec;border-radius:4px;padding:11px 24px;cursor:pointer;transition:.2s}
 .filter button:hover{color:#16345c;border-color:#16345c}
 .filter button.on{color:#fff;background:#16345c;border-color:#16345c}
+.facs{padding:84px 0 104px}
 .facs h2{text-align:center;font-size:clamp(1.6rem,3.2vw,2.2rem);font-weight:800;margin-bottom:14px}
 .facs .lead{text-align:center;color:#4e5a6b;max-width:620px;margin:0 auto 48px;font-size:1rem;letter-spacing:.06em}
 .fac-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
@@ -436,11 +440,11 @@
 .rod .rv{font-family:"Inter",sans-serif;letter-spacing:.08em;color:#16345c;font-size:.98rem;font-weight:600}
 .rod .vchk{font-size:.76rem;font-weight:700;color:#2e7d49}
 .fac-foot{padding:12px 22px;border-top:1px solid #dfe5ec;display:flex;justify-content:space-between;font-size:.74rem;color:#4e5a6b}
+.cta-band{background:linear-gradient(135deg,#16345c 0%,#0e2240 100%);border-radius:16px;margin-inline:clamp(12px,1.5vw,24px);padding:80px 0;text-align:center}
 .cta-band h2{color:#fff;font-size:clamp(1.45rem,2.9vw,2rem);font-weight:800;margin-bottom:16px}
 .cta-band p{color:#b9c6da;max-width:600px;margin:0 auto 30px;font-size:.94rem;line-height:1.9}
 .cta-band .tel-alt{margin-top:18px;font-size:.84rem;color:#b9c6da}
 .cta-band .tel-alt a{color:#fff;font-family:"Inter",sans-serif;font-weight:700;font-size:1.05rem;letter-spacing:.03em}
-.fac-grid{grid-template-columns:1fr 1fr}
 .sa-fac .sec-tag{text-align:center}
 .sa-fac .rank-badge{width:52px;height:52px;object-fit:contain;flex:none}
 
@@ -463,6 +467,14 @@ html{scroll-behavior:auto}
 /* 固定ヘッダーは使わない（テーマ内で通常ヘッダーとして表示） */
 header#header{position:static}
 .hero{padding-top:40px}
+/* facilitiesページ：wp.com版は固定ヘッダーが無いためページヒーローの上余白を縮める */
+.phero{padding-top:48px}
+@media(max-width:900px){
+  .legend-grid{grid-template-columns:1fr}
+}
+/* Jetpackフォームの送信ボタンをブランドカラーに（テーマ標準の黒を上書き） */
+.wp-block-jetpack-button button,.contact-form button[type=submit]{background:#e87f17 !important;color:#0e2240 !important;border:none !important;border-radius:6px !important;font-weight:700 !important;padding:14px 30px !important;cursor:pointer}
+.wp-block-jetpack-button button:hover,.contact-form button[type=submit]:hover{background:#d96f06 !important}
 /* 診断CTAカード・フォーム挿入位置の案内 */
 .diag-tool .dt-lead{font-size:.92rem;color:#4e5a6b;line-height:1.85;margin:10px 0 20px}
 .diag-tool h3{font-size:1.05rem;color:#16345c;margin-bottom:4px}
