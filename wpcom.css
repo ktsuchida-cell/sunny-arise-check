@@ -504,6 +504,8 @@ body.single-post .wp-block-post-content h3{font-size:1.1rem;margin:32px 0 12px;c
 body.single-post .wp-block-post-content p{margin-bottom:1.2em}
 body.single-post .wp-block-post-content a{color:#a85500}
 body.single-post .wp-block-post-content img{border-radius:6px;max-width:100%;height:auto}
+/* コメント欄は使わない（コメントフォーム・「コメントは受け付けていません」表記とも非表示） */
+.wp-block-comments,.wp-block-post-comments,.comments-area,#comments,.wp-block-post-comments-form,#respond{display:none !important}
 /* コラム一覧ページの案内プレースホルダ（ブロック設置後は画面に出ない想定だが念のため装飾） */
 .sa-column-slot{max-width:1140px;margin:0 auto 60px;border:2px dashed #dfe5ec;border-radius:6px;padding:22px;font-size:.85rem;color:#4e5a6b;background:#fff}
 /* Jetpackフォームの送信ボタンをブランドカラーに（テーマ標準の黒を上書き） */
