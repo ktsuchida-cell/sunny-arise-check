@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>1分でできる「災害時生存率」簡易チェック｜サニーアライズ</title>
+<meta name="description" content="介護・福祉施設向けの無料簡易チェック。夜間の職員数と入居者数を入れるだけで、災害時の避難体制をその場で簡易判定します。医療・介護・福祉施設専門の防災コンサルティング「サニーアライズ」提供。">
+<meta name="theme-color" content="#16345c">
+<link rel="icon" type="image/png" href="logo-mark.png">
+<meta property="og:title" content="1分でできる「災害時生存率」簡易チェック｜サニーアライズ">
+<meta property="og:description" content="夜間の職員数と入居者数を入れるだけで、施設の避難体制をその場で簡易判定します（無料）。">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:image" content="https://ktsuchida-cell.github.io/sunny-arise-check/ogp.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Inter:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16345c;
+    --navy-deep:#0e2240;
+    --ink:#1f2b3d;
+    --muted:#4e5a6b;
+    --line:#dfe5ec;
+    --orange:#e87f17;
+    --orange-deep:#c96a08;
+    --orange-text:#a85500;
+    --r-card:6px;
+    --r-chip:4px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{font-family:"Noto Sans JP",system-ui,sans-serif;background:#fff;color:var(--ink);line-height:1.8;letter-spacing:.03em;font-feature-settings:"palt" 1;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  a:focus-visible,button:focus-visible{outline:3px solid #d96f06;outline-offset:2px}
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+  /* header */
+  header{border-bottom:1px solid var(--line);padding:14px 0;background:#fff}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{display:flex;align-items:center;gap:10px}
+  .logo img{width:40px;height:40px;object-fit:contain}
+  .logo b{font-weight:900;font-size:1.02rem;color:var(--navy)}
+  .logo .en2{display:block;font-family:"Inter",sans-serif;font-size:.56rem;letter-spacing:.26em;color:var(--orange-deep);font-weight:600}
+  .back{font-size:.82rem;font-weight:700;color:var(--navy);text-decoration:underline;text-underline-offset:4px}
+  .back:hover{color:var(--orange-deep)}
+
+  /* hero band */
+  .band{background:linear-gradient(135deg,#16345c 0%,#0e2240 100%);padding:56px 0 64px;color:#fff}
+  .free{font-family:"Inter",sans-serif;letter-spacing:.22em;color:#f2a85c;font-size:.7rem;font-weight:600;display:block;margin-bottom:14px;text-transform:uppercase}
+  .band h1{color:#fff;font-size:clamp(1.3rem,4.6vw,1.9rem);font-weight:900;line-height:1.55;margin-bottom:12px}
+  .band p.lead{color:#c9d4e4;font-size:.94rem;line-height:1.9}
+
+  /* tool card */
+  .tool-outer{margin-top:-28px;padding-bottom:72px}
+  .diag-tool{background:#fff;border-radius:var(--r-card);padding:30px 26px;box-shadow:0 18px 44px rgba(4,12,26,.18);border:1px solid var(--line)}
+  .diag-tool h2{font-size:1.02rem;margin-bottom:18px;color:var(--navy);font-weight:700}
+  .dt-field{margin-bottom:14px}
+  .dt-field label{display:block;font-size:.8125rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+  .dt-field input,.dt-field select{width:100%;font-family:inherit;font-size:1rem;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:var(--r-chip);padding:11px 14px;outline:none;transition:.2s}
+  .dt-field input:focus,.dt-field select:focus{border-color:var(--navy);box-shadow:0 0 0 3px rgba(22,52,92,.1)}
+  .dt-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--orange);color:var(--navy-deep);font-weight:700;font-size:.95rem;letter-spacing:.04em;padding:15px 30px;border-radius:999px;transition:.2s;border:none;cursor:pointer;width:100%}
+  .btn:hover{background:var(--orange-deep)}
+  .btn-ghost{background:transparent;border:1px solid var(--navy);color:var(--navy)}
+  .btn-ghost:hover{background:var(--navy);color:#fff}
+  .dt-note{font-size:.75rem;color:var(--muted);margin-top:12px;line-height:1.7}
+  .dt-result{display:none;margin-top:18px;border-radius:var(--r-card);padding:20px 18px;border:1px solid var(--line)}
+  .dt-result.show{display:block}
+  .verdict-badge{display:inline-flex;align-items:center;gap:9px;font-weight:900;font-size:1.05rem;margin-bottom:10px}
+  .vdot2{width:12px;height:12px;border-radius:50%;flex:none}
+  .dt-result.ok{background:#eef7f0;border-color:#bfe0c8}
+  .dt-result.ok .verdict-badge{color:#22663a}
+  .dt-result.ok .vdot2{background:#2e8b4f}
+  .dt-result.warn{background:#fdf4e4;border-color:#f0d9ae}
+  .dt-result.warn .verdict-badge{color:#8a5a00}
+  .dt-result.warn .vdot2{background:#d98e0b}
+  .dt-result.ng{background:#fdeeee;border-color:#f0c1c1}
+  .dt-result.ng .verdict-badge{color:#a02525}
+  .dt-result.ng .vdot2{background:#d64545}
+  .dt-result ul{list-style:none;display:flex;flex-direction:column;gap:7px;margin:0 0 12px;padding:0}
+  .dt-result li{font-size:.85rem;color:var(--ink);padding-left:16px;position:relative;line-height:1.7}
+  .dt-result li::before{content:"";position:absolute;left:2px;top:.6em;width:6px;height:6px;border-radius:2px;background:var(--navy)}
+  .dt-disc{font-size:.75rem;color:var(--muted);line-height:1.7;margin-bottom:14px}
+  .dt-actions{display:flex;flex-direction:column;gap:10px}
+  .copied{font-size:.78rem;color:#22663a;font-weight:700;text-align:center;display:none}
+  .copied.show{display:block}
+
+  footer{border-top:1px solid var(--line);padding:26px 0;text-align:center;font-size:.74rem;color:var(--muted)}
+  footer a{text-decoration:underline;text-underline-offset:3px}
+  @media(max-width:520px){
+    .dt-row{grid-template-columns:1fr}
+    .diag-tool{padding:24px 18px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="https://sunny-arise.com/" aria-label="サニーアライズ">
+      <img src="logo-mark.png" alt="サニーアライズ ロゴ">
+      <span><b>サニーアライズ</b><span class="en2">SUNNY ARISE</span></span>
+    </a>
+    <a class="back" href="https://sunny-arise.com/">サイトへ戻る</a>
+  </div>
+</header>
+
+<main>
+  <section class="band">
+    <div class="wrap">
+      <span class="free">Free Check・無料簡易チェック</span>
+      <h1>1分でできる「災害時生存率」簡易チェック</h1>
+      <p class="lead">夜間の職員数と入居者数を入れるだけで、貴施設の現在地をその場で簡易判定します。詳細な判定は、正式なMTED診断（無料）でご確認いただけます。</p>
+    </div>
+  </section>
+
+  <section class="tool-outer">
+    <div class="wrap">
+      <div class="diag-tool">
+        <h2>貴施設の状況を入力してください</h2>
+        <div class="dt-row">
+          <div class="dt-field">
+            <label for="dtResidents">入居者・利用者数</label>
+            <input type="number" id="dtResidents" min="1" inputmode="numeric" placeholder="例：50">
+          </div>
+          <div class="dt-field">
+            <label for="dtHard">うち自力避難が難しい方</label>
+            <input type="number" id="dtHard" min="0" inputmode="numeric" placeholder="例：30">
+          </div>
+        </div>
+        <div class="dt-field">
+          <label for="dtNight">夜間帯の最少職員数</label>
+          <input type="number" id="dtNight" min="0" inputmode="numeric" placeholder="例：1">
+        </div>
+        <div class="dt-field">
+          <label for="dtBcp">BCP（業務継続計画）の状況</label>
+          <select id="dtBcp">
+            <option value="updated">策定済み（1年以内に見直している）</option>
+            <option value="old">策定済み（更新できていない）</option>
+            <option value="making">策定中</option>
+            <option value="none">未策定</option>
+          </select>
+        </div>
+        <div class="dt-field">
+          <label for="dtDrill">夜間・最少人数を想定した避難訓練</label>
+          <select id="dtDrill">
+            <option value="no">日中の訓練のみ・未実施</option>
+            <option value="yes">実施している</option>
+          </select>
+        </div>
+        <button type="button" class="btn" onclick="runDiag()">この内容で簡易チェックする</button>
+        <div class="dt-result" id="dtResult" aria-live="polite">
+          <div class="verdict-badge"><span class="vdot2"></span><span id="dtLabel"></span></div>
+          <ul id="dtReasons"></ul>
+          <p class="dt-disc">※ 本チェックは入力値に基づく簡易的な目安です。正式な判定は、入居者様の身体・認知機能と職員の搬送力から算出するMTED診断（無料）で行います。</p>
+          <div class="dt-actions">
+            <button type="button" class="btn btn-ghost" onclick="copyResult()">結果をコピーする</button>
+            <p class="copied" id="copiedMsg">✓ コピーしました。お問い合わせフォームに貼り付けてご相談ください</p>
+            <a class="btn" href="https://sunny-arise.com/#contact">無料相談に進む（サニーアライズ公式サイト）</a>
+          </div>
+        </div>
+        <p class="dt-note">入力内容が送信されることはありません（判定はこの画面内で完結します）。</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>提供：<a href="https://sunny-arise.com/">サニーアライズ（医療・介護・福祉施設専門の防災コンサルティング）</a>｜TEL 070-9445-5546（平日 9:00–17:00）</p>
+  </div>
+</footer>
+
+<script>
+  // ===== 簡易チェック（災害時生存率） =====
+  // 判定基準は2026-07-06に代表確認済み：境界（職員1名あたり避難困難者2名/4名）・夜勤0名/4名超は強制「危険」・
+  // BCP未策定は最高でも「要改善」・配点=マンパワー45/BCP25/訓練35・閾値=80点以上「おおむね良好」/45点以下「危険」。
+  // ※正式なMTEDの計算式とは別の簡易版。基準変更時は代表承認を得ること（本体サイト index.html と同一ロジックを維持する）。
+  let dtSummary='';
+  function runDiag(){
+    const nRes=parseInt(document.getElementById('dtResidents').value,10);
+    const nHardIn=parseInt(document.getElementById('dtHard').value,10);
+    const nNight=parseInt(document.getElementById('dtNight').value,10);
+    const bcpSel=document.getElementById('dtBcp');
+    const drillSel=document.getElementById('dtDrill');
+    if(isNaN(nRes)||nRes<1||isNaN(nHardIn)||nHardIn<0||isNaN(nNight)||nNight<0){
+      alert('入居者数・自力避難が難しい方の人数・夜間帯の職員数を入力してください。');return;
+    }
+    const nHard=Math.min(nHardIn,nRes);
+    let pts=0;const reasons=[];
+    let manpowerCritical=false;
+    if(nNight<=0){
+      manpowerCritical=true;
+      reasons.push('夜間帯に職員が0名になる時間帯があるため、避難開始そのものが困難です。');
+    }else if(nHard===0){
+      pts+=45;reasons.push('自力避難が難しい方が0名のため、夜間マンパワーの逼迫は限定的です。');
+    }else{
+      const ratio=nHard/nNight;
+      const r=ratio.toFixed(1).replace(/\.0$/,'');
+      if(ratio<=2){pts+=45;reasons.push('夜間は職員1名あたり避難困難者 約'+r+'名。マンパワーは比較的確保できています。');}
+      else if(ratio<=4){pts+=22;reasons.push('夜間は職員1名あたり避難困難者 約'+r+'名。搬送順・役割分担の設計が不可欠です。');}
+      else{manpowerCritical=true;reasons.push('夜間は職員1名あたり避難困難者 約'+r+'名。物理的に全員避難が難しい水準です。');}
+    }
+    const bcp=bcpSel.value;
+    if(bcp==='updated'){pts+=25;reasons.push('BCPが策定・更新されています。実効性の検証まで進めると万全です。');}
+    else if(bcp==='old'){pts+=12;reasons.push('BCPはあるものの更新が止まっています。体制や入居者の変化が反映されていない恐れがあります。');}
+    else if(bcp==='making'){pts+=8;reasons.push('BCPは策定中です。完成までは未策定減算（施設・居住系3%）の対象となり得る点に注意が必要です。');}
+    else{reasons.push('BCP未策定は介護報酬の未策定減算（施設・居住系3%）の対象です。早急な策定が必要です。');}
+    if(drillSel.value==='yes'){pts+=35;reasons.push('夜間・最少人数を想定した訓練を実施できています。');}
+    else{reasons.push('夜間・最少人数想定の訓練が未実施です。計画があっても「動けない」リスクが残ります。');}
+    let cls,label;
+    if(pts>=80){cls='ok';label='おおむね良好（避難できる見込み）';}
+    else if(pts>45){cls='warn';label='要改善（注意）';}
+    else{cls='ng';label='危険（要対策）';}
+    if(manpowerCritical){cls='ng';label='危険（要対策）';}
+    else if(bcp==='none'&&cls==='ok'){cls='warn';label='要改善（注意）';}
+    const res=document.getElementById('dtResult');
+    res.className='dt-result show '+cls;
+    document.getElementById('dtLabel').textContent=label;
+    const ul=document.getElementById('dtReasons');ul.innerHTML='';
+    reasons.forEach(function(t){const li=document.createElement('li');li.textContent=t;ul.appendChild(li);});
+    dtSummary='【簡易チェック結果】'+label+'\n入居者・利用者数：'+nRes+'名／うち自力避難が難しい方：'+nHard+'名／夜間帯の最少職員数：'+nNight+'名\nBCP：'+bcpSel.selectedOptions[0].text+'／夜間想定訓練：'+drillSel.selectedOptions[0].text;
+    document.getElementById('copiedMsg').classList.remove('show');
+    var rr=res.getBoundingClientRect();
+    if(rr.bottom>innerHeight-40){res.scrollIntoView({block:'nearest'});}
+  }
+  function copyResult(){
+    if(!dtSummary)return;
+    function done(){document.getElementById('copiedMsg').classList.add('show');}
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(dtSummary).then(done).catch(function(){fallbackCopy();done();});
+    }else{fallbackCopy();done();}
+    function fallbackCopy(){
+      var ta=document.createElement('textarea');ta.value=dtSummary;document.body.appendChild(ta);ta.select();
+      try{document.execCommand('copy');}catch(e){}
+      document.body.removeChild(ta);
+    }
+  }
+</script>
+</body>
+</html>
