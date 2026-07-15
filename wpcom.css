@@ -471,3 +471,8 @@ header#header{position:static}
 /* テーマ（Blank Canvas）の標準ヘッダー・フッターを非表示（自前のheader/footerはコンテンツ内にあるため影響なし） */
 .wp-site-blocks > header{display:none !important}
 .wp-site-blocks > .wp-block-template-part:first-child header{display:none !important}
+/* ナビ・ロゴ・ボタンの不自然な折り返しを防止 */
+.logo .txt b,.menu a,.head-tel .num,.head-tel .sub,.btn,.tel-alt{white-space:nowrap}
+/* wp.comのサニタイズでインラインSVGが除去されるため、空になるアイコン枠を非表示 */
+.cert-item .ic,.ci-row .ic{display:none}
+.sp-cta .sp-tel svg{display:none}
