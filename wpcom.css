@@ -512,12 +512,28 @@ body.single-post .wp-block-post-content img{border-radius:6px;max-width:100%;hei
 .wp-block-comments,.wp-block-post-comments,.comments-area,#comments,.wp-block-post-comments-form,#respond{display:none !important}
 /* コラム一覧ページの案内プレースホルダ（ブロック設置後は画面に出ない想定だが念のため装飾） */
 .sa-column-slot{max-width:1140px;margin:0 auto 60px;border:2px dashed #dfe5ec;border-radius:6px;padding:22px;font-size:.85rem;color:#4e5a6b;background:#fff}
+/* フッター最下部のプライバシーポリシー等のリンク */
+.foot-bottom a{color:#b9c6da;text-decoration:underline;text-underline-offset:2px}
+.foot-bottom a:hover{color:#fff}
+/* プライバシーポリシー等の法務テキストページ */
+.legal-sec{padding:64px 0 100px;background:#fff}
+.legal{max-width:820px}
+.legal h2{font-size:1.15rem;color:#16345c;margin:38px 0 12px;padding-left:13px;border-left:4px solid #e87f17}
+.legal h2:first-child{margin-top:0}
+.legal p{color:#3a4657;line-height:2;font-size:.95rem;margin-bottom:8px}
+.legal ul{margin:6px 0 8px;padding-left:1.4em}
+.legal li{color:#3a4657;line-height:1.95;font-size:.95rem;margin-bottom:4px;list-style:disc}
+.legal .legal-note{margin-top:36px;color:#8a94a3;font-size:.85rem}
 /* Jetpackフォームの送信ボタンをブランドカラーに（テーマ標準の黒を上書き） */
 .wp-block-jetpack-button button,.contact-form button[type=submit]{background:#e87f17 !important;color:#0e2240 !important;border:none !important;border-radius:6px !important;font-weight:700 !important;padding:14px 30px !important;cursor:pointer}
 .wp-block-jetpack-button button:hover,.contact-form button[type=submit]:hover{background:#d96f06 !important}
 /* 診断CTAカード・フォーム挿入位置の案内 */
 .diag-tool .dt-lead{font-size:.92rem;color:#4e5a6b;line-height:1.85;margin:10px 0 20px}
 .diag-tool h3{font-size:1.05rem;color:#16345c;margin-bottom:4px}
+/* 白カード内の注記は濃紺バンド用の明るい色(#b9c6da)が漏れて読みにくいため濃い色に上書き＋余白調整 */
+.diag-tool .dt-note{color:#3d4859 !important;margin-top:16px;text-align:center}
+/* カードが左カラムより短く上寄りに見えるのを防ぎ、縦中央で余白を均等に */
+.diag-band .diag-tool{align-self:center}
 .sa-form-slot{border:2px dashed #dfe5ec;border-radius:6px;padding:22px;font-size:.85rem;color:#4e5a6b;background:#fff}
 /* テーマ（Blank Canvas）の標準ヘッダー・フッターを非表示（自前のheader/footerはコンテンツ内にあるため影響なし） */
 .wp-site-blocks > header{display:none !important}
