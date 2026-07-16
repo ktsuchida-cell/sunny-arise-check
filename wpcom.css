@@ -212,6 +212,8 @@
   .cert-item .ic svg{width:22px;height:22px}
   .cert-item h3{font-size:1rem;margin-bottom:8px}
   .cert-item p{font-size:.9375rem;color:#4e5a6b;line-height:1.8}
+  .cert-disc{grid-column:1/-1;max-width:900px;margin:40px auto 0;padding:16px 22px;background:#f2f6fa;border:1px solid #dfe5ec;border-radius:6px;font-size:.84rem;color:#4e5a6b;line-height:1.9;text-align:left}
+  .cert-disc b{color:#1f2b3d}
 
   /* ===== Representative ===== */
   .rep-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
