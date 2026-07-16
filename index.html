@@ -159,16 +159,16 @@
         <div class="dt-row">
           <div class="dt-field">
             <label for="dtResidents">入居者・利用者数</label>
-            <input type="number" id="dtResidents" min="1" inputmode="numeric" placeholder="例：50">
+            <select id="dtResidents"><option value="">選択してください</option></select>
           </div>
           <div class="dt-field">
             <label for="dtHard">うち自力避難が難しい方</label>
-            <input type="number" id="dtHard" min="0" inputmode="numeric" placeholder="例：30">
+            <select id="dtHard"><option value="">選択してください</option></select>
           </div>
         </div>
         <div class="dt-field">
           <label for="dtNight">夜間帯の最少職員数</label>
-          <input type="number" id="dtNight" min="0" inputmode="numeric" placeholder="例：1">
+          <select id="dtNight"><option value="">選択してください</option></select>
         </div>
         <div class="dt-field">
           <label for="dtBcp">BCP（業務継続計画）の状況</label>
@@ -213,6 +213,16 @@
   // ===== 簡易チェック（災害時生存率） =====
   // 判定ロジック：境界（職員1名あたり避難困難者2名/4名）・夜勤0名または4名超は「危険」・BCP未策定は最高でも「要改善」・
   // 配点=マンパワー45/BCP25/訓練35・閾値=80点以上「おおむね良好」/45点以下「危険」。正式なMTED計算式とは別の簡易版。
+  // 数値入力はプルダウン（0〜N の実数選択式）で用意する
+  (function(){
+    function fill(id,min,max){
+      var s=document.getElementById(id);if(!s)return;
+      for(var i=min;i<=max;i++){var o=document.createElement('option');o.value=i;o.textContent=i+'名';s.appendChild(o);}
+    }
+    fill('dtResidents',1,120);
+    fill('dtHard',0,120);
+    fill('dtNight',0,30);
+  })();
   let dtSummary='';
   function runDiag(){
     const nRes=parseInt(document.getElementById('dtResidents').value,10);
