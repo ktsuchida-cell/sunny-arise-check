@@ -102,7 +102,7 @@
   .hero h1{font-size:clamp(1.5rem,1.1rem + 1.8vw,2.3rem);font-weight:900;margin-bottom:32px;line-height:1.65}
   .hero h1 .nw{white-space:nowrap}
   .hero h1 .hl{box-shadow:inset 0 -12px 0 rgba(232,127,23,.2)}
-  .triad{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap}
+  .triad{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:nowrap}
   .triad .p{display:inline-flex;align-items:center;gap:9px;font-weight:700;font-size:.88rem;color:#16345c;padding:8px 18px;border:1px solid #dfe5ec;border-radius:4px;background:#fff}
   .triad .p .dot{width:9px;height:9px;border-radius:50%;flex:none}
   .triad .p.f .dot{background:#d95f2b}
@@ -369,6 +369,11 @@
     .sp-cta{display:flex;padding-bottom:env(safe-area-inset-bottom)}
     .hero{padding-bottom:64px}
     .hero h1{font-size:clamp(1.2rem,5vw,1.5rem)}
+    /* 消防×医療×看護のチップは狭幅でも1行維持（詰めてはみ出し防止） */
+    .triad{gap:6px}
+    .triad .p{padding:6px 11px;font-size:.8rem;gap:6px}
+    .triad .p .dot{width:7px;height:7px}
+    .triad .x{font-size:.78rem}
     .bcp-banner{padding:64px 0}
     .bb-lead{font-size:.9rem}
     .issue-grid,.svc-grid,.res-grid,.why-grid,.merit-grid,.flow-grid,.foot-grid,.cg-grid{grid-template-columns:1fr}
