@@ -517,8 +517,26 @@ body.single-post .wp-block-post-content a{color:#a85500}
 body.single-post .wp-block-post-content img{border-radius:6px;max-width:100%;height:auto}
 /* コメント欄は使わない（コメントフォーム・「コメントは受け付けていません」表記とも非表示） */
 .wp-block-comments,.wp-block-post-comments,.comments-area,#comments,.wp-block-post-comments-form,#respond{display:none !important}
-/* コラム一覧ページの案内プレースホルダ（ブロック設置後は画面に出ない想定だが念のため装飾） */
-.sa-column-slot{max-width:1140px;margin:0 auto 60px;border:2px dashed #dfe5ec;border-radius:6px;padding:22px;font-size:.85rem;color:#4e5a6b;background:#fff}
+/* コラム一覧・認定施設一覧ページの案内プレースホルダ（ブロック設置後は画面に出ない想定だが念のため装飾） */
+.sa-column-slot,.sa-fac-slot{max-width:1140px;margin:0 auto 60px;border:2px dashed #dfe5ec;border-radius:6px;padding:22px;font-size:.85rem;color:#4e5a6b;background:#fff}
+/* ===== 認定施設一覧（投稿式・クエリーループ）：アイキャッチ=レベルバッジ／タイトル=施設名／本文=詳細 ===== */
+.sa-fac-list{max-width:1000px;margin:0 auto;padding:0 0 8px}
+.sa-fac-list ul.wp-block-post-template{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;list-style:none;padding:0;margin:0}
+@media(max-width:760px){.sa-fac-list ul.wp-block-post-template{grid-template-columns:1fr}}
+.sa-fac-list li.wp-block-post{background:#fff;border:1px solid #dfe5ec;border-radius:8px;padding:26px 28px;box-shadow:0 2px 10px rgba(14,34,64,.05);margin:0 !important;transition:.25s}
+.sa-fac-list li.wp-block-post:hover{box-shadow:0 14px 34px rgba(14,34,64,.12)}
+.sa-fac-list .wp-block-post-featured-image{display:block !important;width:80px;margin:0 0 14px}
+.sa-fac-list .wp-block-post-featured-image img{width:80px;height:auto;display:block}
+.sa-fac-list .wp-block-post-title{display:block !important;font-size:1.15rem;font-weight:800;color:#16345c;line-height:1.55;margin:0 0 12px;padding:0}
+.sa-fac-list .wp-block-post-title a{color:#16345c;text-decoration:none}
+.sa-fac-list .wp-block-post-content{font-size:.9rem;color:#4e5a6b;line-height:1.95;margin:0}
+.sa-fac-list .wp-block-post-content p{margin:0 0 5px}
+.sa-fac-list .wp-block-post-content ul{margin:6px 0;padding-left:1.3em}
+.sa-fac-list .wp-block-post-content li{list-style:disc;margin-bottom:2px}
+.sa-fac-list .wp-block-post-content strong{color:#16345c}
+.sa-fac-list .wp-block-query-pagination{margin-top:40px;display:flex;justify-content:center;gap:10px;font-family:"Inter",sans-serif;font-size:.9rem}
+.sa-fac-list .wp-block-query-pagination a,.sa-fac-list .wp-block-query-pagination-numbers .current{padding:8px 14px;border:1px solid #dfe5ec;border-radius:6px;color:#16345c;text-decoration:none}
+.sa-fac-list .wp-block-query-no-results p{text-align:center;color:#4e5a6b;padding:44px 0}
 /* フッター最下部のプライバシーポリシー等のリンク */
 .foot-bottom a{color:#b9c6da;text-decoration:underline;text-underline-offset:2px}
 .foot-bottom a:hover{color:#fff}
