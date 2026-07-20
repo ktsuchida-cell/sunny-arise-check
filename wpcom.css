@@ -99,6 +99,7 @@
   .tagline{display:block;font-size:.84rem;letter-spacing:.08em;color:#16345c;font-weight:700;margin-bottom:16px}
   .tagline .en3{font-family:"Inter",sans-serif;letter-spacing:.22em;font-size:.7rem;display:block;color:#4e5a6b;font-weight:600;margin-bottom:8px;text-transform:uppercase}
   .hero h1{font-size:clamp(1.5rem,1.1rem + 1.8vw,2.3rem);font-weight:900;margin-bottom:32px;line-height:1.5}
+  .hero h1 .h1-brand{display:block;font-size:.62em;color:#16345c;letter-spacing:.04em;margin-bottom:8px;font-weight:900}
   .hero h1 .nw{white-space:nowrap}
   .hero h1 .hl{box-shadow:inset 0 -12px 0 rgba(232,127,23,.2)}
   .triad{display:flex;align-items:center;gap:12px;margin-bottom:16px;flex-wrap:nowrap}
